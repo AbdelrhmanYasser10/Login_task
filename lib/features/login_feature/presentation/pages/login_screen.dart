@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:login_task/core/servcies/cache_helper/cache_keys/cache_keys.dart';
 import 'package:login_task/core/servcies/cache_helper/cache_servcies.dart';
+import 'package:login_task/core/utils/media_query_values.dart';
 import 'package:login_task/features/login_feature/presentation/manager/login_cubit/login_cubit.dart';
 
 import '../../../../core/functions/custom_snack_bar.dart';
@@ -63,7 +64,7 @@ class LoginScreen extends StatelessWidget {
             // First Space in UI
             SizedBox(
               width: double.infinity,
-              height: MediaQuery.of(context).size.height * 0.12,
+              height: context.height * 0.12,
             ),
 
             // Title Widget (Welcome back! ....)
@@ -92,7 +93,7 @@ class LoginScreen extends StatelessWidget {
             // Terms & Conditions
             Padding(
               padding: EdgeInsets.symmetric(
-                  horizontal: MediaQuery.of(context).size.width * 0.166,
+                  horizontal: context.width * 0.166,
                   vertical: 15.0.h
               ),
               child: _termsAndConditions(context),
