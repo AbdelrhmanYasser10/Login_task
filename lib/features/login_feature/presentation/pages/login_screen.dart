@@ -9,7 +9,6 @@ import 'package:login_task/features/login_feature/presentation/manager/login_cub
 import '../../../../core/functions/custom_snack_bar.dart';
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/app_strings.dart';
-import '../../../../core/utils/assets_manager.dart';
 import '../widgets/custom_form_widget/custom_form_widget.dart';
 import '../widgets/custom_social_buttons_column/custom_social_buttons_column.dart';
 import '../widgets/cutom_title_widget/title_widget.dart';
