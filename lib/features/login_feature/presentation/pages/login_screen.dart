@@ -60,11 +60,17 @@ class LoginScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+
+            // First Space in UI
             SizedBox(
               width: double.infinity,
               height: MediaQuery.of(context).size.height * 0.12,
             ),
+
+            // Title Widget (Welcome back! ....)
             const CustomTitleWidget(),
+
+            // MAIN form
             const CustomFormWidget(),
 
             //OR Text (padding space to make the same space)
@@ -78,10 +84,13 @@ class LoginScreen extends StatelessWidget {
               ),
             ),
 
+            // All social buttons
             const SocialButtonsColumn(),
 
-            _verticalSpace(),
+            // Have no Account ? Sign up
             _noAccountWidget(context),
+
+            // Terms & Conditions
             Padding(
               padding: EdgeInsets.symmetric(
                   horizontal: MediaQuery.of(context).size.width * 0.166,
