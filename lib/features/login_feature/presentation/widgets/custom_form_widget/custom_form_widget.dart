@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:login_task/features/login_feature/presentation/manager/login_cubit/login_cubit.dart';
-import 'package:login_task/features/login_feature/presentation/widgets/custom_loading_widget/custom_loading_widget.dart';
 
 import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/utils/app_strings.dart';
-import '../custom_button_widget/custom_button_widget.dart';
-import '../custom_check_box_widget/custom_check_box_widget.dart';
-import '../custom_text_field/text_field.dart';
+import '../../../../../core/widgets/custom_button_widget/custom_button_widget.dart';
+import '../../../../../core/widgets/custom_check_box_widget/custom_check_box_widget.dart';
+import '../../../../../core/widgets/custom_loading_widget/custom_loading_widget.dart';
+import '../../../../../core/widgets/custom_text_field/text_field.dart';
+
 
 class CustomFormWidget extends StatefulWidget {
   const CustomFormWidget({Key? key}) : super(key: key);
@@ -38,7 +39,7 @@ class _CustomFormWidgetState extends State<CustomFormWidget> {
       key: _formKey,
       child: Column(
         children: [
-          verticalSpace(),
+          _verticalSpace(),
           CustomTextField(
             controller: _emailController,
             validator: (value) {
@@ -50,7 +51,7 @@ class _CustomFormWidgetState extends State<CustomFormWidget> {
             prefixIcon: const Icon(Icons.email_outlined),
             hintText: AppStrings.emailHintText,
           ),
-          verticalSpace(),
+          _verticalSpace(),
           CustomTextField(
             controller: _passwordController,
             isPassword: true,
@@ -63,22 +64,29 @@ class _CustomFormWidgetState extends State<CustomFormWidget> {
             prefixIcon: const Icon(Icons.lock_outline),
             hintText: AppStrings.passwordHintText,
           ),
-          Row(
-            children: [
-              const CustomCheckBoxWidget(),
-              const Spacer(),
-              TextButton(
-                onPressed: () {},
-                child: Text(
-                  AppStrings.forgetPassword,
-                  style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                        color: AppColors.kForgetPasswordColor,
-                      ),
+
+          //Adding some vertical padding on the row
+          Padding(
+            padding: EdgeInsets.symmetric(
+                vertical: 7.0.h,
+            ),
+            child: Row(
+              children: [
+                const CustomCheckBoxWidget(),
+                const Spacer(),
+                GestureDetector(
+                  onTap: () {},
+                  child: Text(
+                    AppStrings.forgetPassword,
+                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                          color: AppColors.kForgetPasswordColor,
+                        ),
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
-          verticalSpace(),
+          _verticalSpace(),
           BlocConsumer<LoginCubit, LoginState>(
             listener: (context, state) {},
             builder: (context, state) {
@@ -104,7 +112,7 @@ class _CustomFormWidgetState extends State<CustomFormWidget> {
     );
   }
 
-  SizedBox verticalSpace() {
+  SizedBox _verticalSpace() {
     return SizedBox(
       height: 20.0.w,
     );

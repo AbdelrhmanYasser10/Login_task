@@ -1,4 +1,3 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -12,6 +11,7 @@ import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/app_strings.dart';
 import '../widgets/custom_form_widget/custom_form_widget.dart';
 import '../widgets/custom_social_buttons_column/custom_social_buttons_column.dart';
+import '../widgets/custom_terms_text_widget/custom_terms_text_widget.dart';
 import '../widgets/cutom_title_widget/title_widget.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -91,35 +91,16 @@ class LoginScreen extends StatelessWidget {
             _noAccountWidget(context),
 
             // Terms & Conditions
-            Padding(
-              padding: EdgeInsets.symmetric(
-                  horizontal: context.width * 0.166,
-                  vertical: 15.0.h
-              ),
-              child: _termsAndConditions(context),
-            ),
+           const CustomTermsTextWidget(),
+
             _verticalSpace(),
           ],
         ),
       ),
     );
   }
-  RichText _termsAndConditions(BuildContext context)=>RichText(
-    textAlign: TextAlign.center,
-    text: TextSpan(
-      text: AppStrings.signingConfirmation,
-      style: Theme.of(context).textTheme.bodySmall,
-      children: [
-        TextSpan(
-            text: " ${AppStrings.termsServices}",
-            style: Theme.of(context).textTheme.bodySmall!.copyWith(
-              color: AppColors.kButtonColor
-            ),
-            recognizer: TapGestureRecognizer()..onTap = () {},
-        ),
-      ],
-    ),
-  );
+
+
   Row _noAccountWidget(BuildContext context)=>Row(
     mainAxisAlignment: MainAxisAlignment.center,
     children: [
@@ -140,5 +121,7 @@ class LoginScreen extends StatelessWidget {
       )
     ],
   );
+
+
   SizedBox _verticalSpace()=> SizedBox(height: 20.0.h,);
 }
